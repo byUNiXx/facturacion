@@ -29,3 +29,51 @@ public class cliente {
 	}
 
 }
+
+
+
+/*package appTelefonía;
+
+/**
+ * Created by Diegu on 22/02/2017.
+ */
+/**public class Clientes extends Direccion {
+
+    private String NIF;
+    private String nombre;
+    private String correoElectronico;
+    private Direccion direccion;
+
+
+
+    public Clientes(String NIF, String nombre, String correoElectronico, Direccion direccion) {
+
+        this.NIF = NIF;
+        this.nombre = nombre;
+        this.correoElectronico = correoElectronico;
+        this.direccion = direccion;
+    }
+
+
+    public Direccion getDireccion() {
+        return direccion;
+    }
+
+    public String getNombre(){
+        return nombre;
+    }
+
+    public String getNIF() {
+        return NIF;
+    }
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public static void main(String[] args) {
+        Clientes cliente = new Clientes("53788220Y","Diego","al342376@uji.es",new Direccion("12540","Castellón"
+                ,"Vila-real"));
+        System.out.println(cliente);
+    }
+}*/
