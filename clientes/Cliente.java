@@ -40,7 +40,7 @@ public class Cliente{
         return correoElectronico;
     }
     
-    public String getFechaAlta() {
+    public String getFecha() {
         return fechaAlta.toString();
     }
     
