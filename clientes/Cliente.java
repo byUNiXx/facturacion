@@ -1,3 +1,4 @@
+//Metodo getFecha() // devuelva fecha alta
 package cliente;
 
 import fecha.Fecha;
