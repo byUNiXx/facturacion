@@ -1,13 +1,15 @@
-package appTelefonía.Datos;
-import appTelefonía.Cliente.Cliente;
-import appTelefonía.Tarifa.Tarifa;
+package datos;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Diegu on 28/02/2017.
- */
+import cliente.Cliente;
+import cliente.Direccion;
+import cliente.Empresa;
+import cliente.Particular;
+import fecha.Fecha;
+import tarifa.Tarifa;
+
 public class DatosClientes {
     private List<Cliente> data;
 
@@ -32,15 +34,40 @@ public class DatosClientes {
     }
 
     public void cambiarTarifa(Cliente cliente, Tarifa tarifa){
-        int posicion = data.get(cliente);
+        int posicion = data.indexOf(cliente);
+        
+        cliente.cambiarTarifa(tarifa);
+        
+        data.set(posicion, cliente);
     }
 
-    public Cliente buscarCliente(){
-
+    public Cliente buscarCliente(Cliente cliente){
+    	
+    	int pos = data.indexOf(cliente);
+    	
+    	return data.get(pos);
     }
 
-    public Cliente listadoClientes(){
+    /*public Cliente listadoClientes(){
 
+    }*/
+    
+    public static void main(String[] args) {
+    	
+    	Cliente cliente = new Particular("63788220Y","Diego","Cano","al342376@uji.es",
+    			new Direccion("12540","Vila-real","Castellón"), new Fecha(25, 01, 2017), new Tarifa(0.37));
+    	
+    	Cliente cliente2 = new Empresa("53788220Y","Diego","al342376@uji.es",
+    			new Direccion("12540","Vila-real","Castellón"), new Fecha(25, 01, 2017), new Tarifa(0.37));
+    	
+    	DatosClientes datos = new DatosClientes();
+    	
+    	datos.añadirCliente(cliente);
+    	datos.añadirCliente(cliente2);
+    	
+    	datos.cambiarTarifa(cliente2, new Tarifa(0.50));
+    	
+    	System.out.println(datos.buscarCliente(cliente2).getTarifa());
     }
 
 
