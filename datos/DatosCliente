@@ -1,0 +1,47 @@
+package appTelefonía.Datos;
+import appTelefonía.Cliente.Cliente;
+import appTelefonía.Tarifa.Tarifa;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by Diegu on 28/02/2017.
+ */
+public class DatosClientes {
+    private List<Cliente> data;
+
+    public DatosClientes(){
+        data = new ArrayList<Cliente>();
+    }
+
+    public void añadirCliente(Cliente cliente){
+        if (data.contains(cliente)){
+            System.out.println("Ya existe este cliente mentecato");
+            return;
+        }
+        data.add(cliente);
+    }
+
+    public void borrarCliente(Cliente cliente){
+        if (!data.contains(cliente)){
+            System.out.println("No existe este cliente mentecato");
+            return;
+        }
+        data.remove(cliente);
+    }
+
+    public void cambiarTarifa(Cliente cliente, Tarifa tarifa){
+        int posicion = data.get(cliente);
+    }
+
+    public Cliente buscarCliente(){
+
+    }
+
+    public Cliente listadoClientes(){
+
+    }
+
+
+}
