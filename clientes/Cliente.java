@@ -75,6 +75,6 @@ public class Cliente{
     			new Direccion("12540","Vila-real","Castellón"), new Fecha(25, 01, 2017), new Tarifa(0.37));*/
         
     	System.out.println(cliente);
-    	System.out.println(hora.truncatedTo(ChronoUnit.SECONDS));
+    	System.out.println(hora.truncatedTo(ChronoUnit.SECONDS)); //No hagas caso a esto, solo estaba probando cosas.
     }
 }
