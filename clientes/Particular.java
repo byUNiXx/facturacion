@@ -1,6 +1,7 @@
 package cliente;
 
-import fecha.Fecha;
+import java.time.LocalDate;
+
 import tarifa.Tarifa;
 
 public class Particular extends Cliente{
@@ -8,7 +9,7 @@ public class Particular extends Cliente{
 	private String apellidos;
 	
 	public Particular(String NIF, String nombre, String apellidos,
-			String correoElectronico, Direccion direccion, Fecha fecha, Tarifa tarifa){
+			String correoElectronico, Direccion direccion, LocalDate fecha, Tarifa tarifa){
 		
 		super(NIF, nombre, correoElectronico, direccion, fecha, tarifa);
 		
@@ -18,4 +19,12 @@ public class Particular extends Cliente{
 	public String getApellidos(){
 		return apellidos;
 	}
+	
+	public String toString(){
+		
+		return getNIF() + "  " +  getNombre() + "  " + getApellidos() + "  " 
+				+getCorreoElectronico() + "  " + getDireccion() + "  " + getFecha() 
+				+ "  " + getTarifa();
+	}
 }
+
