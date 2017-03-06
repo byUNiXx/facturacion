@@ -8,4 +8,14 @@ public class Tarifa {
 		
 		this.precio = precio;
 	}
+	
+	public Double toDouble(){
+		
+		return precio;
+	}
+	
+	public String toString(){
+		
+		return Double.toString(precio);
+	}
 }
