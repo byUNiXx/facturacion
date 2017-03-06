@@ -1,57 +1,31 @@
 package datos;
 
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import cliente.Cliente;
-import llamada.Llamada;
+import factura.Factura;
 
-public class DatosLlamadas{
+public class DatosFacturas{
 	
-	private Map<Cliente, ArrayList<Llamada>> data;
+	private Map<Cliente, ArrayList<Factura>> data;
 	
-	public DatosLlamadas(){
+	public DatosFacturas(){
 		
 		data = new HashMap<>();
 	}
 	
-	public Map<Cliente, ArrayList<Llamada>> getData(){
-		
-		return data;
-	}
-	
-	public void añadirLlamada(Cliente cliente, Llamada llamada){
+	public void añadirFactura(Cliente cliente, Factura factura){
 		
 		if(!data.containsKey(cliente)){
 			data.put(cliente, new ArrayList<>());
 		}
-		data.get(cliente).add(llamada);
+		data.get(cliente).add(factura);
 	}
 	
-	public ArrayList<Llamada> llamadasCliente(Cliente cliente){
+	public ArrayList<Factura> facturasCliente(Cliente cliente){
 		
 		return data.get(cliente);
-	}
-	
-	public ArrayList<LocalTime> buscarLlamadaPeriodo 
-	(Cliente cliente, LocalDateTime periodoInicio, LocalDateTime periodoFinal){
-		
-		ArrayList<Llamada> llamadasCliente = llamadasCliente(cliente);
-		ArrayList<LocalTime> llamadasRango = new ArrayList<>();
-		
-		Llamada aux;
-		
-		for(int i = 0; i < llamadasCliente.size(); i++){
-			
-			aux = llamadasCliente.get(i);
-			
-			if(aux.getFecha().compareTo(periodoInicio) >= 0 && aux.getFecha().compareTo(periodoFinal) <= 0)
-				llamadasRango.add(aux.getDuracion());
-		}
-		
-		return llamadasRango;
 	}
 }
