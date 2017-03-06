@@ -1,14 +1,10 @@
 package datos;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import cliente.Cliente;
-import cliente.Direccion;
-import cliente.Empresa;
-import cliente.Particular;
 import tarifa.Tarifa;
 
 public class DatosClientes {
@@ -55,30 +51,4 @@ public class DatosClientes {
 
     	return data;
     }
-    
-    public static void main(String[] args) {
-    	
-    	Cliente cliente = new Particular("63788220Y","Diego","Cano","al342376@uji.es",
-    			new Direccion("12540","Vila-real","Castellón"), LocalDate.of(2017, 11, 23), new Tarifa(0.37));
-    	
-    	Cliente cliente2 = new Empresa("53788220Y","Diego","al342376@uji.es",
-    			new Direccion("12540","Vila-real","Castellón"), LocalDate.of(2017, 8, 29), new Tarifa(0.37));
-    	
-    	DatosClientes datos = new DatosClientes();
-    	
-    	datos.añadirCliente(cliente);
-    	datos.añadirCliente(cliente2);
-    	
-    	datos.cambiarTarifa(cliente2, new Tarifa(0.50));
-    	
-    	List<Cliente> lista = datos.listadoClientes();
-    	
-    	for(int i = 0; i < datos.data.size(); i++){
-    		System.out.println(datos.data.get(i));
-    	}
-    	
-    	System.out.println(datos.buscarCliente("53788220Y").getTarifa());
-    }
-
-
 }
