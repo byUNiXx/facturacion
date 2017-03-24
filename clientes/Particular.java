@@ -1,4 +1,4 @@
-package cliente;
+ppackage cliente;
 
 import java.time.LocalDate;
 
@@ -27,4 +27,3 @@ public class Particular extends Cliente{
 				+ "  " + getTarifa();
 	}
 }
-
