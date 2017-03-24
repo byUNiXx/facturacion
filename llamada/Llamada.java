@@ -13,7 +13,11 @@ public class Llamada {
 		
 	}
 	
-	public Llamada(String numeroDest, LocalDateTime fechaHoraLlamada, LocalTime duracion){
+	public Llamada(String numeroDest, LocalDateTime fechaHoraLlamada, LocalTime duracion)
+			throws IllegalArgumentException{
+		
+		if(duracion.compareTo(LocalTime.of(0, 0, 0)) == 0)
+			throw new IllegalArgumentException();
 		
 		this.numeroDest = numeroDest;
 		this.fechaHoraLlamada = fechaHoraLlamada;
@@ -39,14 +43,4 @@ public class Llamada {
 		
 		return numeroDest + " | " + fechaHoraLlamada + " | " + duracion;
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		Llamada llamada = new Llamada("690693021", LocalDateTime.of(2017, 12, 25, 12, 56, 12), 
-				LocalTime.of(1, 12, 13));
-		
-		System.out.println(llamada);
-	}
-
 }
