@@ -28,7 +28,9 @@ public class DatosLlamadas{
 		if(!data.containsKey(cliente)){
 			data.put(cliente, new ArrayList<>());
 		}
-		data.get(cliente).add(llamada);
+		if(!data.get(cliente).contains(llamada)){
+			data.get(cliente).add(llamada);
+		}
 	}
 	
 	public ArrayList<Llamada> llamadasCliente(Cliente cliente){
@@ -55,3 +57,4 @@ public class DatosLlamadas{
 		return llamadasRango;
 	}
 }
+
