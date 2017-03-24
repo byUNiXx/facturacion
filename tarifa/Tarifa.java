@@ -6,7 +6,7 @@ public class Tarifa {
 	
 	public Tarifa(double precio) throws IllegalArgumentException{
 		if(precio <= 0)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("La tarifa tiene que ser mayor que 0.");
 		
 		this.precio = precio;
 	}
