@@ -1,29 +1,34 @@
 package cliente;
 
-import java.time.LocalDate;
-
-import tarifa.Tarifa;
-
-public class Particular extends Cliente{
+public class Direccion {
 	
-	private String apellidos;
-	
-	public Particular(String NIF, String nombre, String apellidos,
-			String correoElectronico, Direccion direccion, LocalDate fecha, Tarifa tarifa){
-		
-		super(NIF, nombre, correoElectronico, direccion, fecha, tarifa);
-		
-		this.apellidos = apellidos;
+	private String cod;
+	private String prov;
+	private String pob;
+
+	public Direccion(String cod, String pob, String prov){
+		this.cod=cod;
+		this.prov=prov;
+		this.pob=pob;
 	}
 	
-	public String getApellidos(){
-		return apellidos;
+	public String getCP(){
+		
+		return cod;
+	}
+	
+	public String getPoblacion(){
+		
+		return pob;
+	}
+
+	public String getProvincia(){
+		return prov;
 	}
 	
 	public String toString(){
 		
-		return getNIF() + "  " +  getNombre() + "  " + getApellidos() + "  " 
-				+getCorreoElectronico() + "  " + getDireccion() + "  " + getFecha() 
-				+ "  " + getTarifa();
+		return cod + " " +  pob + " " + prov;
+		
 	}
 }
