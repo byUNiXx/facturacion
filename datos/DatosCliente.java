@@ -9,25 +9,27 @@ import tarifa.Tarifa;
 
 public class DatosClientes {
     private List<Cliente> data;
+    private int size;
 
     public DatosClientes(){
         data = new ArrayList<Cliente>();
+        size = 0;
     }
 
-    public void añadirCliente(Cliente cliente){
+    public void añadirCliente(Cliente cliente) throws IllegalArgumentException{
         if (data.contains(cliente)){
-            System.out.println("Ya existe este cliente mentecato");
-            return;
+        	throw new IllegalArgumentException();
         }
         data.add(cliente);
+        size++;
     }
 
-    public void borrarCliente(Cliente cliente){
+    public void borrarCliente(Cliente cliente) throws NoSuchElementException{
         if (!data.contains(cliente)){
-            System.out.println("No existe este cliente mentecato");
-            return;
+        	throw new NoSuchElementException("No existe el cliente");
         }
         data.remove(cliente);
+        size--;
     }
 
     public void cambiarTarifa(Cliente cliente, Tarifa tarifa){
@@ -40,15 +42,28 @@ public class DatosClientes {
 
     public Cliente buscarCliente(String NIF) throws NoSuchElementException{
     	
-    	for(Cliente cliente : data){
-    		if(cliente.getNIF().equals(NIF))
-    			return cliente;
+    	for(int i = 0; i < data.size(); i++){
+    		if(data.get(i).getNIF().equals(NIF))
+    			return data.get(i);
     	}
-    	throw new NoSuchElementException();	
+    	throw new NoSuchElementException("No existe el cliente");	
+    }
+    
+    public boolean contains(Cliente cliente){
+    	
+    	if(!data.contains(cliente))
+    		return false;
+    	
+    	return true;
     }
 
     public List<Cliente> listadoClientes(){
 
     	return data;
+    }
+    
+    public int getSize(){
+    	
+    	return size;
     }
 }
