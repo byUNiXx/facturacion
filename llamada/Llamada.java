@@ -17,7 +17,7 @@ public class Llamada {
 			throws IllegalArgumentException{
 		
 		if(duracion.compareTo(LocalTime.of(0, 0, 0)) == 0)
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("Duración invalida");
 		
 		this.numeroDest = numeroDest;
 		this.fechaHoraLlamada = fechaHoraLlamada;
