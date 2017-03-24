@@ -4,7 +4,9 @@ public class Tarifa {
 	
 	private double precio;
 	
-	public Tarifa(double precio){
+	public Tarifa(double precio) throws IllegalArgumentException{
+		if(precio <= 0)
+			throw new IllegalArgumentException();
 		
 		this.precio = precio;
 	}
@@ -18,4 +20,5 @@ public class Tarifa {
 		
 		return Double.toString(precio);
 	}
+	
 }
