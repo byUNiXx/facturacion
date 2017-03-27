@@ -1,0 +1,7 @@
+package genericidad;
+
+import java.time.LocalDateTime;
+
+public interface Data {
+	public LocalDateTime getFecha();
+}
