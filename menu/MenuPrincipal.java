@@ -11,22 +11,27 @@ public class MenuPrincipal {
 		System.out.println("Elije una opcion: ");
 		byte opcion = entrada.nextByte();
 		OpcionesMenuPrincipal opcionMenuPrincipal = OpcionesMenuPrincipal.getOpcion(opcion);
+		entrada.close();
 		
 		switch(opcionMenuPrincipal.name()){
 		
 			case "BUSCAR_CLIENTE_NIF":
-				entrada = metodoEntrada();
-				buscarNIF(entrada);
+				MetodosMenu.buscarNIF();
+				break;
 			case "BUSCAR_COD_FAC":
-				System.out.println(opcionMenuPrincipal.name());
+				MetodosMenu.buscarCodFac();
+				break;
 			case "RECUPERAR_CLIENTES":
-				System.out.println(opcionMenuPrincipal.name());
+				MetodosMenu.listadoClientes();
+				break;
 			case "BUSCAR_CLIENTES_PERIODO":
-				System.out.println(opcionMenuPrincipal.name());
+				MetodosMenu.buscarClientePeriodo();
+				break;
 			case "DAR_ALTA_CLIENTE":
-				System.out.println(opcionMenuPrincipal.name());
+				MetodosMenu.altaCliente();
+				break;
 			case "FINALIZAR":
-				
+				//falta esto, aqui debe ir el metodo que guarde en un fichero
 			default:
 				MenuPrincipal.inicio();
 		}
