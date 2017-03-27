@@ -47,7 +47,7 @@ public class MetodosMenu {
 		try{
 			factura = Init.dataFacturas.buscarCodigo(entrada);
 		}catch(NoSuchElementException e){
-			e.getMessage();
+			System.out.println(e.getMessage());
 			return;
 		}
 		System.out.println("codigo  tarifa  fechaEmision  periodoInicio  periodoFinal  importe");
@@ -142,10 +142,5 @@ public class MetodosMenu {
 		}
 		
 		Init.dataClientes.añadirCliente(cliente);
-	}
-	
-	public static void main(String[] args) {
-		
-		
 	}
 }
