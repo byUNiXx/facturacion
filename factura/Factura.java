@@ -8,18 +8,21 @@ import java.util.NoSuchElementException;
 
 import cliente.Cliente;
 import datos.DatosLlamadas;
+import genericidad.Data;
+import genericidad.Fecha;
+import llamada.Llamada;
 import tarifa.Tarifa;
 
-public class Factura {
+public class Factura implements Data {
 	
 	 private int codigo;
 	 private Tarifa tarifa;
-	 private LocalDate fechaEmision;
+	 private LocalDateTime fechaEmision;
 	 private LocalDateTime periodoInicio;
 	 private LocalDateTime periodoFinal;
 	 private double importe;
 	
-	public Factura(int codigo, Tarifa tarifa, LocalDate fechaEmision,
+	public Factura(int codigo, Tarifa tarifa, LocalDateTime fechaEmision,
 		LocalDateTime periodoInicio, LocalDateTime periodoFinal, double importe)
 		throws IllegalArgumentException{
 		
@@ -27,7 +30,7 @@ public class Factura {
 			throw new IllegalArgumentException("La factura tiene un periodo de facturacion invalido. "
 					+ "La fecha de comienzo del periodo no puede ser mayor o igual a la del fin.");
 		
-		if(fechaEmision.compareTo(periodoFinal.toLocalDate()) < 0)
+		if(fechaEmision.compareTo(periodoFinal) < 0)
 			throw new IllegalArgumentException("La factura tiene una fecha de emision invalida. "
 					+ "La fecha de emisión de la factura es anterior a la fecha de finalización del periodo de facturación.");
 			
@@ -44,23 +47,24 @@ public class Factura {
 		
 		this.tarifa = cliente.getTarifa();
 		
-		ArrayList<LocalTime> llamadasRango;
+		ArrayList<Llamada> llamadasRango;
 		
 		try{
-			llamadasRango = llamadas.buscarLlamadaPeriodo(cliente, periodoInicio, periodoFinal);
-		}catch(IllegalArgumentException e){
-			throw new IllegalArgumentException("Periodo de busqueda invalido. "
-					+ "La fecha de comienzo del periodo no puede ser mayor o igual a la del fin.");
+			llamadasRango = llamadas.llamadasCliente(cliente);
 		}catch(NoSuchElementException e){
-			throw new NoSuchElementException("El cliente no tiene ninguna llamada en la base de datos. No se puede calcular el importe");
+			throw new NoSuchElementException(e.getMessage());
 		}
 		
-		if(!llamadasRango.isEmpty()){
+		ArrayList<Llamada> listaAux = Fecha.getFecha(periodoInicio, periodoFinal, llamadasRango);
+		
+		
+		
+		if(!listaAux.isEmpty()){
 			double total = 0;
 			
-			for(int i = 0; i < llamadasRango.size(); i++){
+			for(int i = 0; i < listaAux.size(); i++){
 				
-				total += timeToMin(llamadasRango.get(i));
+				total += timeToMin(listaAux.get(i).getDuracion());
 			}
 			importe = total * cliente.getTarifa().toDouble();
 		
@@ -87,7 +91,7 @@ public class Factura {
 		return tarifa;
 	}
 	
-	public LocalDate getFecha(){
+	public LocalDateTime getFecha(){
 		
 		return fechaEmision;
 	}
