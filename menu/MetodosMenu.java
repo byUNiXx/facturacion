@@ -20,8 +20,6 @@ public class MetodosMenu {
 		Scanner entrada = new Scanner(System.in);
 		String salida = entrada.nextLine();
 		
-		entrada.close();
-		
 		return salida;
 	}
 
@@ -107,7 +105,7 @@ public class MetodosMenu {
 		String[] entrada = new String[3];
 		
 		for(int i = 0; i < vector.length; i++){
-			System.out.printf("Introdude el/la %1: ", vector[i]);
+			System.out.printf("Introduce el/la " + vector[i] + ": ");
 			entrada[i] = entradaDatos();
 		}
 		
@@ -127,7 +125,7 @@ public class MetodosMenu {
 		
 		if(particular.toLowerCase().equals("s")){
 			for(int i = 0; i < vectorParticular.length; i++){
-				System.out.printf("Introduce el/la %1: ", vectorParticular[i]);
+				System.out.printf("Introduce el/la " + vectorParticular[i] + ": ");
 				entrada[i] = entradaDatos();
 			}
 			cliente = new Particular(entrada[0], entrada[1], entrada[2], entrada[3], entradaDireccion(),
@@ -135,7 +133,7 @@ public class MetodosMenu {
 		
 		}else{
 			for(int i = 0; i < vectorNormal.length; i++){
-				System.out.printf("Introduce el/la %1: ", vectorNormal[i]);
+				System.out.printf("Introduce el/la " + vectorNormal[i] + ": ");
 				entrada[i] = entradaDatos();
 			}
 			
