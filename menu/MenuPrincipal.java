@@ -11,7 +11,6 @@ public class MenuPrincipal {
 		System.out.println("Elije una opcion: ");
 		byte opcion = entrada.nextByte();
 		OpcionesMenuPrincipal opcionMenuPrincipal = OpcionesMenuPrincipal.getOpcion(opcion);
-		entrada.close();
 		
 		switch(opcionMenuPrincipal.name()){
 		
@@ -31,10 +30,12 @@ public class MenuPrincipal {
 				MetodosMenu.altaCliente();
 				break;
 			case "FINALIZAR":
-				//falta esto, aqui debe ir el metodo que guarde en un fichero
+				
 			default:
 				MenuPrincipal.inicio();
+				
 		}
+		MenuPrincipal.inicio();
 	}
 
 }
