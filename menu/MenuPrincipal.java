@@ -30,7 +30,7 @@ public class MenuPrincipal {
 				MetodosMenu.altaCliente();
 				break;
 			case "FINALIZAR":
-				
+				MenuPrincipal.inicio(); //No puesto aun, falta ficheros
 			default:
 				MenuPrincipal.inicio();
 				
