@@ -1,0 +1,52 @@
+package genericidad;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+/*
+  - Un conjunto de objetos. Cuando decimos conjunto, queremos decir alguna estructura de datos de las que dispone Java y que contenga objetos. 
+ 	En nuestro caso, como el código de la función que tendrás que escribir necesitará consultar de cada objeto la función 
+ 	getFecha(), estaremos hablando de que la función, en la práctica, recibirá un conjunto de clientes, llamadas o facturas.
+  - Una fecha de inicio.
+  - Una fecha final. Este método sustituirá al método de la práctica previa que usaste para calcular el importe de una factura.
+  
+  -------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  El objetivo de la función será devolver un conjunto de objetos, extraído del conjunto que se pasó como argumento, donde los objetos seleccionados 
+  cumplan la restricción de que su fecha se encuentra entre las fechas inicial y final pasadas como argumentos. 
+  
+  -------------------------------------------------------------------------------------------------------------------------------------------------
+  
+  - Mostrar un listado de clientes que fueron dados de alta entre dos fechas.
+  - Mostrar un listado de llamadas de un cliente que fueron realizadas entre dos fechas.
+  - Mostrar un listado de facturas de cliente emitidas entre dos fechas.
+  
+  */
+
+public class Fecha<T> {
+	
+	public static <T extends Data> ArrayList<T> getFecha(LocalDateTime fechaInicio, LocalDateTime fechaFinal, List<T> lista)
+		throws IllegalArgumentException {
+		if (fechaInicio.compareTo(fechaFinal) >= 0){
+			throw new IllegalArgumentException("Periodo de busqueda invalido.La fecha de INICIO no puede ser mayor que la fecha del FINAL");
+		}
+		ArrayList<T> resultado = new ArrayList<T>();
+		
+		T aux;
+
+		for(int i = 0; i < lista.size(); i++){
+			aux = lista.get(i);
+			
+			if(aux.getFecha().compareTo(fechaInicio) >= 0 && aux.getFecha().compareTo(fechaFinal) <= 0)
+				resultado.add(aux);
+		}
+		
+		return resultado;
+		
+		
+	}
+	
+	
+	  
+}
