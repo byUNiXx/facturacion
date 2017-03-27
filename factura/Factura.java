@@ -1,6 +1,5 @@
 package factura;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -8,21 +7,21 @@ import java.util.NoSuchElementException;
 
 import cliente.Cliente;
 import datos.DatosLlamadas;
-import genericidad.Data;
-import genericidad.Fecha;
+import generacidad.Data;
+import generacidad.Fecha;
 import llamada.Llamada;
 import tarifa.Tarifa;
 
 public class Factura implements Data {
 	
-	 private int codigo;
+	 private String codigo;
 	 private Tarifa tarifa;
 	 private LocalDateTime fechaEmision;
 	 private LocalDateTime periodoInicio;
 	 private LocalDateTime periodoFinal;
 	 private double importe;
 	
-	public Factura(int codigo, Tarifa tarifa, LocalDateTime fechaEmision,
+	public Factura(String codigo, Tarifa tarifa, LocalDateTime fechaEmision,
 		LocalDateTime periodoInicio, LocalDateTime periodoFinal, double importe)
 		throws IllegalArgumentException{
 		
@@ -81,7 +80,7 @@ public class Factura implements Data {
 		return min;
 	}
 	
-	public int getCodigo(){
+	public String getCodigo(){
 		
 		return codigo;
 	}
@@ -110,4 +109,10 @@ public class Factura implements Data {
 		
 		return importe;
 	}
+	
+	public String toString(){
+    	
+    	return "  "+ codigo + "  " +  tarifa + "  " + fechaEmision + "  " + periodoInicio 
+    			+ "  " + periodoFinal + "  " + importe;
+    }
 }
