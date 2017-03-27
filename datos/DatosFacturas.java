@@ -1,6 +1,7 @@
 package datos;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -26,6 +27,21 @@ public class DatosFacturas{
 			data.get(cliente).add(factura);
 		else
 			throw new IllegalArgumentException("Ya existe esa factura en la base de datos.");
+	}
+	
+	public Factura buscarCodigo(String codigo) throws NoSuchElementException{
+		
+		Collection<ArrayList<Factura>> coleccion = data.values();
+		
+		for(ArrayList<Factura> lista : coleccion){
+			for(Factura factura : lista){
+				if(factura.getCodigo().equals(codigo)){
+					return factura;
+				}
+			}
+		}
+ 
+    	throw new NoSuchElementException("Operación abortada. No existe esa factura.");
 	}
 	
 	public ArrayList<Factura> facturasCliente(Cliente cliente) throws NoSuchElementException{
