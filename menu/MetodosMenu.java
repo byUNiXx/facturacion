@@ -79,7 +79,7 @@ public class MetodosMenu {
 		try{
 			lista = Fecha.getFecha(fechaInicio, fechaFinal, Init.dataClientes.listadoClientes());
 		}catch(IllegalArgumentException e){
-			e.getMessage();
+			System.out.println(e.getMessage());
 			return;
 		}
 		if(lista.size()==0){
@@ -144,3 +144,4 @@ public class MetodosMenu {
 		Init.dataClientes.añadirCliente(cliente);
 	}
 }
+
