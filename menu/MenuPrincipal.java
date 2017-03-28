@@ -2,6 +2,8 @@ package menu;
 
 import java.util.Scanner;
 
+import main.Shutdown;
+
 public class MenuPrincipal {
 	
 	public static void inicio(){
@@ -30,7 +32,9 @@ public class MenuPrincipal {
 				MetodosMenu.altaCliente();
 				break;
 			case "FINALIZAR":
-				MenuPrincipal.inicio(); //No puesto aun, falta ficheros
+				entrada.close();
+				Shutdown.shutdown();
+				break;
 			default:
 				MenuPrincipal.inicio();
 				
