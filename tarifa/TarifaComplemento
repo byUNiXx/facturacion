@@ -1,0 +1,29 @@
+package tarifa;
+
+import llamada.Llamada;
+
+public abstract class TarifaComplemento extends Tarifa {
+	private Tarifa tarifa;
+	public TarifaComplemento(Tarifa tarifa, double precio){
+		super(precio);
+		this.tarifa = tarifa;
+	}
+	
+	abstract boolean aplicarTarifa(Llamada llamada);
+	
+	@Override
+	public double calcular(Llamada llamada){
+		double calcular =  super.toDouble() * (llamada.getDuracion().getHour()*60.0 + llamada.getDuracion().getMinute() +
+				llamada.getDuracion().getSecond()/60.0);
+		
+		double precioBase = tarifa.calcular(llamada);
+		
+		if (aplicarTarifa(llamada)){
+			if (calcular < precioBase){ // Miramos el precio mas economico
+				return calcular;
+			}
+		}
+		return precioBase;			
+	}
+  
+}
