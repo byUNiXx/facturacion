@@ -21,4 +21,10 @@ public class Tarifa {
 		return Double.toString(precio);
 	}
 	
+	public double calcular(Llamada llamada){
+		return precio * (llamada.getDuracion().getHour()*60.0 + llamada.getDuracion().getMinute() +
+				llamada.getDuracion().getSecond()/60.0);
+	}
+	
+	
 }
