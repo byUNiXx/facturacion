@@ -1,5 +1,6 @@
 package factura;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -7,12 +8,12 @@ import java.util.NoSuchElementException;
 
 import cliente.Cliente;
 import datos.DatosLlamadas;
-import generacidad.Data;
-import generacidad.Fecha;
+import genericidad.Data;
+import genericidad.Fecha;
 import llamada.Llamada;
 import tarifa.Tarifa;
 
-public class Factura implements Data {
+public class Factura implements Data, Serializable {
 	
 	 private String codigo;
 	 private Tarifa tarifa;
@@ -63,10 +64,9 @@ public class Factura implements Data {
 			
 			for(int i = 0; i < listaAux.size(); i++){
 				
-				total += timeToMin(listaAux.get(i).getDuracion());
+				total += tarifa.calcular(listaAux.get(i));
 			}
-			importe = total * cliente.getTarifa().toDouble();
-		
+			importe = total;
 		}else{
 			
 			importe = 0;
@@ -109,10 +109,4 @@ public class Factura implements Data {
 		
 		return importe;
 	}
-	
-	public String toString(){
-    	
-    	return "  "+ codigo + "  " +  tarifa + "  " + fechaEmision + "  " + periodoInicio 
-    			+ "  " + periodoFinal + "  " + importe;
-    }
 }
