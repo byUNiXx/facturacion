@@ -1,0 +1,16 @@
+package tarifa;
+
+import java.time.DayOfWeek;
+import java.util.Calendar;
+
+import llamada.Llamada;
+
+public class TarifaDomingo extends TarifaComplemento {
+	public TarifaDomingo(Tarifa tarifa, double precio){
+		super(tarifa,precio);
+	}
+	
+	boolean aplicarTarifa(Llamada llamada){
+		return llamada.getFecha().getDayOfWeek().equals(DayOfWeek.SUNDAY);
+	}
+}
