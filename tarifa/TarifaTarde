@@ -1,0 +1,27 @@
+package tarifa;
+
+import java.time.DayOfWeek;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
+import llamada.Llamada;
+
+public class TarifaTarde extends TarifaComplemento{
+	private LocalTime hora1 = LocalTime.parse("16:00:00"); 
+	private LocalTime hora2 = LocalTime.parse("19:00:00");
+	
+	public TarifaTarde(Tarifa tarifa,double precio){
+		super(tarifa,precio);
+	}
+	
+	boolean aplicarTarifa(Llamada llamada){
+		if (llamada.getFecha().getHour() >= hora1.getHour()){
+			if (llamada.getFecha().getHour() <= hora2.getHour()){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+
+}
